@@ -14,6 +14,9 @@
 </head>
 <body>
 
+    <!-- Cursor-reactive ambient glow (desktop only, respects reduced motion) -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <!-- =============================================
          HEADER / NAV — sticky pill navigation
     ============================================= -->
@@ -46,9 +49,11 @@
         ============================================= -->
         <section id="hero" class="hero">
             <!-- Ambient background orbs (CSS only) -->
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
+            <div class="orb-field">
+                <div class="orb orb-1"></div>
+                <div class="orb orb-2"></div>
+                <div class="orb orb-3"></div>
+            </div>
 
             <div class="hero-inner">
 
@@ -84,17 +89,17 @@
                     <!-- Quick stats -->
                     <div class="hero-stats">
                         <div class="stat">
-                            <strong>3+</strong>
+                            <strong class="counter" data-count="3" data-suffix="+">0+</strong>
                             <span>projets réels</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat">
-                            <strong>7</strong>
+                            <strong class="counter" data-count="7">0</strong>
                             <span>compétences</span>
                         </div>
                         <div class="stat-divider"></div>
                         <div class="stat">
-                            <strong>2026</strong>
+                            <strong class="counter" data-count="2026">0</strong>
                             <span>portfolio</span>
                         </div>
                     </div>
@@ -136,13 +141,21 @@
                             <span>UI moderne</span>
                         </div>
 
-                        <!-- Tech stack mini-icons row -->
-                        <div class="stack-row">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" title="HTML">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" title="CSS">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JS" title="JavaScript">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" title="C">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" title="SQL">
+                        <!-- Tech stack mini-icons row: infinite marquee -->
+                        <div class="stack-row marquee">
+                            <div class="marquee-track">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" title="HTML">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" title="CSS">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JS" title="JavaScript">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" title="C">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" title="SQL">
+                                <!-- duplicated set for a seamless loop -->
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" aria-hidden="true">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" aria-hidden="true">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" aria-hidden="true">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="" aria-hidden="true">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" aria-hidden="true">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -218,7 +231,7 @@
                         <li class="info-item info-item--wide">
                             <span class="info-label">Email</span>
                             <strong>
-                                <a href="mailto:KABIRI.MARWANE@usms.ac.ma">
+                                <a href="mailto:Marwankabiri7@gmail.com">
                                     Marwankabiri7@gmail.com
                                 </a>
                             </strong>
@@ -529,7 +542,7 @@
                         </p>
 
                         <div class="contact-direct">
-                            <a href="mailto:KABIRI.MARWANE@usms.ac.ma" class="contact-link">
+                            <a href="mailto:Marwankabiri7@gmail.com" class="contact-link">
                                 <div class="contact-link-icon">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20">
                                         <rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -634,6 +647,8 @@
          MINIMAL JS: mobile nav + scroll animations
     ============================================= -->
     <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         /* --- Mobile nav toggle --- */
         const toggle = document.getElementById('navToggle');
         const nav    = document.getElementById('siteNav');
@@ -710,12 +725,107 @@
                 `Nom: ${name}\nEmail: ${email}\nSujet: ${subject}\n\nMessage:\n${message}`
             );
 
-            window.location.href = `mailto:KABIRI.MARWANE@usms.ac.ma?subject=${emailSubject}&body=${emailBody}`;
+            window.location.href = `mailto:Marwankabiri7@gmail.com?subject=${emailSubject}&body=${emailBody}`;
             btnText.textContent = 'Email prêt à envoyer';
             this.reset();
 
             setTimeout(() => { btnText.textContent = 'Envoyer le message'; }, 3000);
         });
+
+        /* =============================================
+           EXTRA MOTION — only when the user hasn't asked
+           the OS to reduce motion
+        ============================================= */
+        if (!prefersReducedMotion) {
+
+            /* --- Cursor-reactive ambient spotlight --- */
+            const glow = document.getElementById('cursorGlow');
+            const canHover = window.matchMedia('(pointer: fine)').matches;
+            if (glow && canHover) {
+                window.addEventListener('pointermove', (e) => {
+                    glow.style.setProperty('--mx', `${e.clientX}px`);
+                    glow.style.setProperty('--my', `${e.clientY}px`);
+                    glow.classList.add('is-active');
+                }, { passive: true });
+                window.addEventListener('pointerleave', () => glow.classList.remove('is-active'));
+            }
+
+            /* --- Parallax drift for hero orbs on scroll --- */
+            const orbField = document.querySelector('.orb-field');
+            if (orbField) {
+                window.addEventListener('scroll', () => {
+                    orbField.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+                }, { passive: true });
+            }
+
+            /* --- 3D tilt on hover: hero card, project cards, skill category cards --- */
+            const tiltEls = document.querySelectorAll('.hero-card, .project-card, .skill-cat-card');
+            if (canHover) {
+                tiltEls.forEach(el => {
+                    el.style.transition = 'transform 0.35s ' + getComputedStyle(document.documentElement).getPropertyValue('--ease');
+                    el.addEventListener('mousemove', (e) => {
+                        const rect = el.getBoundingClientRect();
+                        const px = (e.clientX - rect.left) / rect.width - 0.5;
+                        const py = (e.clientY - rect.top) / rect.height - 0.5;
+                        el.style.transition = 'transform 0.08s linear';
+                        el.style.transform =
+                            `perspective(900px) rotateX(${(-py * 7).toFixed(2)}deg) rotateY(${(px * 7).toFixed(2)}deg) translateY(-6px) scale(1.015)`;
+                    });
+                    el.addEventListener('mouseleave', () => {
+                        el.style.transition = 'transform 0.5s ' + getComputedStyle(document.documentElement).getPropertyValue('--ease');
+                        el.style.transform = '';
+                    });
+                });
+            }
+
+            /* --- Magnetic pull on primary buttons --- */
+            if (canHover) {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('mousemove', (e) => {
+                        const rect = btn.getBoundingClientRect();
+                        const relX = e.clientX - rect.left - rect.width / 2;
+                        const relY = e.clientY - rect.top - rect.height / 2;
+                        btn.style.transition = 'transform 0.08s linear';
+                        btn.style.transform = `translate(${relX * 0.25}px, ${(relY * 0.3) - 2}px)`;
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        btn.style.transition = 'transform 0.4s var(--ease)';
+                        btn.style.transform = '';
+                    });
+                });
+            }
+
+            /* --- Animated count-up stats --- */
+            const counters = document.querySelectorAll('.counter');
+            const runCounter = (el) => {
+                const target = parseInt(el.dataset.count, 10) || 0;
+                const suffix = el.dataset.suffix || '';
+                const duration = 1400;
+                const start = performance.now();
+                const step = (now) => {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                    el.textContent = Math.round(eased * target) + suffix;
+                    if (progress < 1) requestAnimationFrame(step);
+                };
+                requestAnimationFrame(step);
+            };
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        runCounter(entry.target);
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(c => counterObserver.observe(c));
+
+        } else {
+            /* Reduced motion: just show the final numbers, no animation */
+            document.querySelectorAll('.counter').forEach(el => {
+                el.textContent = (el.dataset.count || '0') + (el.dataset.suffix || '');
+            });
+        }
     </script>
 
 </body>
