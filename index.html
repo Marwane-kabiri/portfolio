@@ -3,332 +3,720 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marwane Kabiri | Portfolio</title>
+    <title>Marwane Kabiri — Developer Portfolio</title>
+
+    <!-- Google Fonts: Sora (display) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
-    <div class="page-shell">
-        <header class="site-header">
-            <a class="logo" href="#hero">
-                <img src="me.jpeg" alt="Photo de Marwane Kabiri" class="logo-photo">
-                <span class="logo-text">Marwane Kabiri</span>
-            </a>
 
-            <nav>
-                <ul>
-                    <li><a href="#hero">Accueil</a></li>
-                    <li><a href="#infos">Profil</a></li>
-                    <li><a href="#projets">Projets</a></li>
-                    <li><a href="#competences">Competences</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <!-- =============================================
+         HEADER / NAV — sticky pill navigation
+    ============================================= -->
+    <header class="site-header" id="top">
+        <a class="logo" href="#hero">
+            <img class="logo-avatar" src="marwane boss.jpeg" alt="Portrait de Marwane Kabiri">
+            <span class="logo-name">Marwane Kabiri</span>
+        </a>
 
-        <main>
-            <section id="hero" class="hero-panel">
+        <!-- Hamburger (mobile only) -->
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="site-nav" id="siteNav">
+            <ul>
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- =============================================
+             HERO — full-screen intro with split typography
+        ============================================= -->
+        <section id="hero" class="hero">
+            <!-- Ambient background orbs (CSS only) -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+
+            <div class="hero-inner">
+
+                <!-- LEFT: copy -->
                 <div class="hero-copy">
-                    <p class="eyebrow">Etudiant en informatique - Beni Mellal</p>
-                    <h1>Je construis des experiences web propres, utiles et ambitieuses.</h1>
-                    <p class="hero-text">
-                        Je suis Marwane Kabiri, etudiant a la Faculte des Sciences et Techniques de Beni Mellal.
-                        J'aime transformer des idees en produits web modernes, automatiser des taches utiles
-                        et apprendre vite en construisant des projets concrets.
+                    <p class="eyebrow">
+                        <span class="dot"></span>
+                        Élève ingénieur GI-ILSI · ENSAM Meknès
                     </p>
 
-                    <div class="hero-actions">
-                        <a href="#projets" class="btn btn-primary">Explorer mes projets</a>
-                        <a href="#contact" class="btn btn-secondary">Me contacter</a>
+                    <!-- Signature typographic moment: large stacked headline -->
+                    <h1 class="hero-headline">
+                        <span class="line-normal">Je construis</span>
+                        <span class="line-accent">des produits</span>
+                        <span class="line-normal">qui durent.</span>
+                    </h1>
+
+                    <p class="hero-sub">
+                        Passionné par le web, l'automatisation et l'algorithmique.
+                        Je transforme des idées en interfaces concrètes, utiles et bien construites.
+                    </p>
+
+                    <div class="hero-cta">
+                        <a href="#projets" class="btn btn-primary">
+                            <span>Voir mes projets</span>
+                            <svg class="btn-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">Me contacter</a>
                     </div>
 
-                    <div class="hero-metrics">
-                        <article>
+                    <!-- Quick stats -->
+                    <div class="hero-stats">
+                        <div class="stat">
                             <strong>3+</strong>
-                            <span>projets reels</span>
-                        </article>
-                        <article>
+                            <span>projets réels</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
                             <strong>7</strong>
-                            <span>competences techniques</span>
-                        </article>
-                        <article>
-                            <strong>2025</strong>
-                            <span>portfolio edition</span>
-                        </article>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="visual-card profile-card">
-                        <span class="floating-badge">Disponible pour projets</span>
-                        <img
-                            src="me.jpeg"
-                            alt="Portrait de Marwane Kabiri"
-                            class="photo-profil"
-                            onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 400 400&quot;><defs><linearGradient id=&quot;g&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;100%&quot;><stop offset=&quot;0%&quot; stop-color=&quot;%230f766e&quot;/><stop offset=&quot;100%&quot; stop-color=&quot;%23f59e0b&quot;/></linearGradient></defs><rect width=&quot;400&quot; height=&quot;400&quot; rx=&quot;44&quot; fill=&quot;url(%23g)&quot;/><circle cx=&quot;200&quot; cy=&quot;148&quot; r=&quot;72&quot; fill=&quot;white&quot; fill-opacity=&quot;0.92&quot;/><path d=&quot;M92 320c18-59 58-90 108-90s90 31 108 90&quot; fill=&quot;white&quot; fill-opacity=&quot;0.92&quot;/></svg>';">
-
-                        <div class="profile-card-content">
-                            <p class="profile-label">Vision</p>
-                            <h2>Developer en evolution constante</h2>
-                            <p>
-                                Curieux, rigoureux et motive, avec un vrai interet pour le web, la logique
-                                algorithmique et l'automatisation.
-                            </p>
+                            <span>compétences</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <strong>2026</strong>
+                            <span>portfolio</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="visual-card mini-card">
-                        <p>Focus actuel</p>
-                        <strong>Web, Machine Learning, automatisation et interfaces plus modernes</strong>
+                <!-- RIGHT: identity card -->
+                <div class="hero-card-wrap">
+                    <div class="hero-card">
+                        <div class="hero-card-header">
+                            <!-- Fallback avatar if photo missing -->
+                            <div class="avatar-wrap">
+                                <img
+                                    src="marwane boss.jpeg"
+                                    alt="Portrait de Marwane Kabiri"
+                                    class="avatar-img"
+                                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="avatar-fallback" style="display:none">MK</div>
+                            </div>
+                            <div class="hero-card-id">
+                                <strong>Marwane Kabiri</strong>
+                                <span>Élève ingénieur · GI-ILSI, ENSAM Meknès</span>
+                            </div>
+                            <span class="status-pill">
+                                <span class="status-dot"></span>
+                                Disponible
+                            </span>
+                        </div>
+
+                        <p class="hero-card-bio">
+                            Curieux, rigoureux et motivé — je cherche à progresser par des
+                            projets concrets qui demandent de la créativité et de la logique.
+                        </p>
+
+                        <!-- Focus tags -->
+                        <div class="focus-tags">
+                            <span>Web</span>
+                            <span>Machine Learning</span>
+                            <span>Automatisation</span>
+                            <span>UI moderne</span>
+                        </div>
+
+                        <!-- Tech stack mini-icons row -->
+                        <div class="stack-row">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" title="HTML">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS" title="CSS">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JS" title="JavaScript">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C" title="C">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL" title="SQL">
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="infos" class="panel">
-                <div class="section-heading">
-                    <p class="eyebrow">Profil</p>
-                    <h2>Une base serieuse, une energie de progression tres forte</h2>
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="scroll-hint">
+                <span>Défiler</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             PROFIL — about + info cards
+        ============================================= -->
+        <section id="profil" class="section">
+            <div class="container">
+
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>Profil</span>
                 </div>
+                <h2 class="section-title">Une base sérieuse,<br>une énergie de progression forte.</h2>
 
                 <div class="about-grid">
-                    <article class="about-story">
-                        <p>
-                            Titulaire d'un baccalaureat en sciences physiques, je poursuis un DEUST en informatique.
-                            J'aime les environnements ou il faut comprendre, construire et ameliorer. Mon objectif est
-                            d'evoluer vers des projets web et techniques qui demandent autant de clarte que de creativite.
-                        </p>
-                    </article>
 
-                    <ul class="info-cards">
-                        <li>
-                            <span>Nom complet</span>
+                    <!-- Story -->
+                    <div class="about-story glass-card">
+                        <div class="about-portrait">
+                            <img src="marwane boss.jpeg" alt="Marwane Kabiri, élève ingénieur à l'ENSAM Meknès">
+                            <span class="about-portrait-badge">ENSAM Meknès</span>
+                        </div>
+                        <p>
+                            Titulaire d'un baccalauréat en sciences physiques, je poursuis
+                            aujourd'hui le cycle ingénieur en Génie Informatique — Ingénierie
+                            Logicielle et Systèmes d'Information (GI-ILSI) à l'ENSAM Meknès.
+                            J'aime les environnements où il faut comprendre, construire et
+                            améliorer.
+                        </p>
+                        <p>
+                            Mon objectif : évoluer vers des projets web et techniques qui
+                            demandent autant de clarté que de créativité, en travaillant avec
+                            des équipes sérieuses sur des problèmes réels.
+                        </p>
+
+                        <div class="about-quote">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                            <p>Apprendre vite en construisant des choses vraies.</p>
+                        </div>
+                    </div>
+
+                    <!-- Info grid -->
+                    <ul class="info-grid">
+                        <li class="info-item">
+                            <span class="info-label">Nom complet</span>
                             <strong>Marwane Kabiri</strong>
                         </li>
-                        <li>
-                            <span>Age</span>
+                        <li class="info-item">
+                            <span class="info-label">Âge</span>
                             <strong>20 ans</strong>
                         </li>
-                        <li>
-                            <span>Diplome</span>
-                            <strong>DEUST Informatique en cours</strong>
+                        <li class="info-item">
+                            <span class="info-label">Formation</span>
+                            <strong>GI-ILSI, ENSAM Meknès</strong>
                         </li>
-                        <li>
-                            <span>Ville</span>
-                            <strong>Beni Mellal</strong>
+                        <li class="info-item">
+                            <span class="info-label">Ville</span>
+                            <strong>Meknès, Maroc</strong>
                         </li>
-                        <li>
-                            <span>Email</span>
-                            <strong><a href="mailto:KABIRI.MARWANE@usms.ac.ma">KABIRI.MARWANE@usms.ac.ma</a></strong>
+                        <li class="info-item info-item--wide">
+                            <span class="info-label">Email</span>
+                            <strong>
+                                <a href="mailto:KABIRI.MARWANE@usms.ac.ma">
+                                    Marwankabiri7@gmail.com
+                                </a>
+                            </strong>
                         </li>
-                        <li>
-                            <span>Telephone</span>
-                            <strong><a href="tel:+212665380718">+212 665 380 718</a></strong>
+                        <li class="info-item info-item--wide">
+                            <span class="info-label">Téléphone</span>
+                            <strong>
+                                <a href="tel:+212665380718">+212 665 380 718</a>
+                            </strong>
                         </li>
                     </ul>
-                </div>
-            </section>
 
-            <section id="projets" class="panel">
-                <div class="section-heading">
-                    <p class="eyebrow">Selection</p>
-                    <h2>Des projets qui melangent execution, utilite et apprentissage</h2>
                 </div>
+            </div>
+        </section>
+
+        <!-- =============================================
+             PROJETS — 3-card grid
+        ============================================= -->
+        <section id="projets" class="section section--dark">
+            <div class="container">
+
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>Projets</span>
+                </div>
+                <h2 class="section-title">Exécution, utilité,<br>apprentissage.</h2>
 
                 <div class="projects-grid">
-                    <article class="projet projet-featured">
-                        <div class="project-top">
+
+                    <!-- Project 01 -->
+                    <article class="project-card project-card--featured">
+                        <div class="project-card-top">
                             <span class="project-tag">E-commerce</span>
-                            <span class="project-index">01</span>
+                            <span class="project-num">01</span>
                         </div>
                         <h3>Smaker Store</h3>
-                        <p>Une boutique web d'equipement sportif avec une presentation produit claire et un parcours oriente conversion.</p>
-                        <div class="project-meta">
+                        <p>
+                            Boutique web d'équipement sportif avec une présentation
+                            produit claire et un parcours orienté conversion.
+                        </p>
+                        <div class="project-tags">
                             <span>Web design</span>
                             <span>Storefront</span>
-                            <span>Execution rapide</span>
+                            <span>Conversion</span>
                         </div>
-                        <a href="https://smaker.youcan.store/" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+                        <a class="project-link" href="https://smaker.youcan.store/" target="_blank" rel="noopener noreferrer">
+                            Voir le projet
+                            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </article>
 
-                    <article class="projet">
-                        <div class="project-top">
+                    <!-- Project 02 -->
+                    <article class="project-card">
+                        <div class="project-card-top">
                             <span class="project-tag">Niche store</span>
-                            <span class="project-index">02</span>
+                            <span class="project-num">02</span>
                         </div>
                         <h3>Odette Cat Store</h3>
-                        <p>Une boutique specialisee pour chats, pensee pour un univers plus cible et plus emotionnel.</p>
-                        <div class="project-meta">
+                        <p>
+                            Boutique spécialisée pour chats — univers ciblé,
+                            identité émotionnelle, UX simplifiée.
+                        </p>
+                        <div class="project-tags">
                             <span>Branding</span>
                             <span>E-commerce</span>
                             <span>UX simple</span>
                         </div>
-                        <a href="https://odette.youcan.store/" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+                        <a class="project-link" href="https://odette.youcan.store/" target="_blank" rel="noopener noreferrer">
+                            Voir le projet
+                            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </article>
 
-                    <article class="projet">
-                        <div class="project-top">
+                    <!-- Project 03 -->
+                    <article class="project-card">
+                        <div class="project-card-top">
                             <span class="project-tag">Automation</span>
-                            <span class="project-index">03</span>
+                            <span class="project-num">03</span>
                         </div>
                         <h3>Agent de gestion client</h3>
-                        <p>Un systeme d'automatisation capable de traiter des demandes clients pour aider une startup a gagner du temps.</p>
-                        <div class="project-meta">
+                        <p>
+                            Système d'automatisation qui traite des demandes clients
+                            en temps réel pour aider une startup à gagner du temps.
+                        </p>
+                        <div class="project-tags">
                             <span>n8n</span>
                             <span>Workflow</span>
                             <span>Support client</span>
                         </div>
-                        <a href="#contact">Parlons-en</a>
+                        <a class="project-link" href="#contact">
+                            Parlons-en
+                            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+                                <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </article>
+
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="competences" class="panel">
-                <div class="section-heading">
-                    <p class="eyebrow">Competences</p>
-                    <h2>Un profil polyvalent avec une base technique solide</h2>
+        <!-- =============================================
+             COMPÉTENCES — horizontal skill bars
+        ============================================= -->
+        <section id="competences" class="section">
+            <div class="container">
+
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>Compétences</span>
                 </div>
+                <h2 class="section-title">Un profil polyvalent,<br>une base technique solide.</h2>
 
-                <div class="skills">
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="Logo HTML">
-                            <div>
-                                <span>HTML</span>
-                                <small>Structure et semantique</small>
+                <div class="skills-layout">
+
+                    <!-- Left: skill bars -->
+                    <div class="skill-bars">
+
+                        <div class="skill-row" data-level="85">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML">
+                                </div>
+                                <div>
+                                    <span class="skill-name">HTML</span>
+                                    <small>Structure & sémantique</small>
+                                </div>
                             </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 85%"></div>
+                            </div>
+                            <span class="skill-pct">85%</span>
                         </div>
-                        <div class="skill-category">Frontend</div>
-                        <div class="skill-bar"><div class="bar" style="width: 85%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
+
+                        <div class="skill-row" data-level="78">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS">
+                                </div>
+                                <div>
+                                    <span class="skill-name">CSS</span>
+                                    <small>Layouts, animations, détails</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 78%"></div>
+                            </div>
+                            <span class="skill-pct">78%</span>
+                        </div>
+
+                        <div class="skill-row" data-level="84">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="C">
+                                </div>
+                                <div>
+                                    <span class="skill-name">C</span>
+                                    <small>Logique, structures & algorithmes</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 84%"></div>
+                            </div>
+                            <span class="skill-pct">84%</span>
+                        </div>
+
+                        <div class="skill-row" data-level="76">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="SQL">
+                                </div>
+                                <div>
+                                    <span class="skill-name">SQL</span>
+                                    <small>Manipulation de données</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 76%"></div>
+                            </div>
+                            <span class="skill-pct">76%</span>
+                        </div>
+
+                        <div class="skill-row" data-level="62">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JS">
+                                </div>
+                                <div>
+                                    <span class="skill-name">JavaScript</span>
+                                    <small>Interactions & logique client</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 62%"></div>
+                            </div>
+                            <span class="skill-pct">62%</span>
+                        </div>
+
+                        <div class="skill-row" data-level="74">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="MATLAB">
+                                </div>
+                                <div>
+                                    <span class="skill-name">MATLAB</span>
+                                    <small>Calcul scientifique</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 74%"></div>
+                            </div>
+                            <span class="skill-pct">74%</span>
+                        </div>
+
+                        <div class="skill-row" data-level="70">
+                            <div class="skill-info">
+                                <div class="skill-icon-wrap n8n-icon">n8n</div>
+                                <div>
+                                    <span class="skill-name">n8n</span>
+                                    <small>Automatisation & workflows</small>
+                                </div>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" style="--pct: 70%"></div>
+                            </div>
+                            <span class="skill-pct">70%</span>
+                        </div>
+
                     </div>
 
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="Logo CSS">
-                            <div>
-                                <span>CSS</span>
-                                <small>Layouts, animations, details visuels</small>
+                    <!-- Right: category summary cards -->
+                    <div class="skill-categories">
+                        <div class="skill-cat-card">
+                            <div class="skill-cat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <path d="M8 21h8M12 17v4"/>
+                                </svg>
                             </div>
+                            <h4>Frontend</h4>
+                            <p>HTML, CSS, JavaScript pour créer des interfaces propres et réactives.</p>
                         </div>
-                        <div class="skill-category">Frontend</div>
-                        <div class="skill-bar"><div class="bar" style="width: 78%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
+
+                        <div class="skill-cat-card">
+                            <div class="skill-cat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                                    <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                                    <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>
+                                </svg>
+                            </div>
+                            <h4>Données</h4>
+                            <p>SQL et MATLAB pour structurer, interroger et analyser des données.</p>
+                        </div>
+
+                        <div class="skill-cat-card">
+                            <div class="skill-cat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h4>Systèmes</h4>
+                            <p>C pour la logique bas niveau, structures de données et algorithmes.</p>
+                        </div>
+
+                        <div class="skill-cat-card">
+                            <div class="skill-cat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22">
+                                    <path d="M12 5v14M5 12h14"/>
+                                    <circle cx="12" cy="12" r="9"/>
+                                </svg>
+                            </div>
+                            <h4>Automation</h4>
+                            <p>n8n pour orchestrer des workflows et automatiser les tâches répétitives.</p>
+                        </div>
                     </div>
 
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="Logo JavaScript">
-                            <div>
-                                <span>JavaScript</span>
-                                <small>Interactions et logique client</small>
-                            </div>
-                        </div>
-                        <div class="skill-category">Frontend</div>
-                        <div class="skill-bar"><div class="bar" style="width: 62%;"></div></div>
-                        <div class="skill-level">Debutant avance</div>
-                    </div>
-
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="Logo SQL">
-                            <div>
-                                <span>SQL</span>
-                                <small>Manipulation et organisation des donnees</small>
-                            </div>
-                        </div>
-                        <div class="skill-category">Base de donnees</div>
-                        <div class="skill-bar"><div class="bar" style="width: 76%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
-                    </div>
-
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="Logo MATLAB">
-                            <div>
-                                <span>MATLAB</span>
-                                <small>Calcul scientifique et experimentation</small>
-                            </div>
-                        </div>
-                        <div class="skill-category">Scientific</div>
-                        <div class="skill-bar"><div class="bar" style="width: 74%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
-                    </div>
-
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" alt="Logo C">
-                            <div>
-                                <span>C</span>
-                                <small>Logique, structures et algorithmes</small>
-                            </div>
-                        </div>
-                        <div class="skill-category">Programmation</div>
-                        <div class="skill-bar"><div class="bar" style="width: 84%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
-                    </div>
-
-                    <div class="skill">
-                        <div class="skill-left">
-                            <img src="https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-logo.png" alt="Logo n8n">
-                            <div>
-                                <span>n8n</span>
-                                <small>Automatisation et workflows</small>
-                            </div>
-                        </div>
-                        <div class="skill-category">Automation</div>
-                        <div class="skill-bar"><div class="bar" style="width: 70%;"></div></div>
-                        <div class="skill-level">Intermediaire</div>
-                    </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="contact" class="panel contact-panel">
-                <div class="section-heading">
-                    <p class="eyebrow">Contact</p>
-                    <h2>Vous avez un projet, une idee ou une opportunite de stage ?</h2>
+        <!-- =============================================
+             CONTACT — split layout
+        ============================================= -->
+        <section id="contact" class="section section--dark">
+            <div class="container">
+
+                <div class="section-label">
+                    <span class="label-line"></span>
+                    <span>Contact</span>
                 </div>
+                <h2 class="section-title">Un projet, un stage,<br>une idée à explorer ?</h2>
 
-                <div class="contact-layout">
-                    <div class="contact-copy">
-                        <p>
-                            Je cherche a progresser a travers des experiences serieuses, des collaborations utiles
-                            et des projets qui me poussent a apprendre plus vite. Si vous cherchez quelqu'un de motive,
-                            on peut echanger.
+                <div class="contact-grid">
+
+                    <!-- Info -->
+                    <div class="contact-info">
+                        <p class="contact-intro">
+                            Je cherche à progresser à travers des expériences sérieuses,
+                            des collaborations utiles et des projets qui me poussent à apprendre
+                            plus vite. Si vous cherchez quelqu'un de motivé, échangeons.
                         </p>
 
-                        <div class="contact-links">
-                            <a href="mailto:KABIRI.MARWANE@usms.ac.ma">KABIRI.MARWANE@usms.ac.ma</a>
-                            <a href="tel:+212665380718">+212 665 380 718</a>  
+                        <div class="contact-direct">
+                            <a href="mailto:KABIRI.MARWANE@usms.ac.ma" class="contact-link">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="m2 7 10 6 10-6"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <small>Email</small>
+                                    <span>Marwankabiri7@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <a href="tel:+212665380718" class="contact-link">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 12 19.79 19.79 0 0 1 1.07 3.4 2 2 0 0 1 3 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <small>Téléphone</small>
+                                    <span>+212 665 380 718</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/marwane-kabiri-42585a3a8" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                <div class="contact-link-icon">
+                                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <small>LinkedIn</small>
+                                    <span>marwane-kabiri</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <form class="contact-form">
-                        <input type="text" placeholder="Votre nom" required>
-                        <input type="email" placeholder="Votre email" required>
-                        <select required>
-                            <option value="" selected disabled hidden>Sujet</option>
-                            <option value="projet">Projet</option>
-                            <option value="stage">Stage</option>
-                            <option value="collaboration">Collaboration</option>
-                            <option value="autre">Autre</option>
-                        </select>
-                        <textarea rows="6" placeholder="Votre message"></textarea>
-                        <button type="submit">Envoyer le message</button>
-                    </form>
-                </div>
-            </section>
-        </main>
+                    <!-- Form -->
+                    <form class="contact-form glass-card" id="contactForm" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Votre nom</label>
+                                <input type="text" id="name" name="name" placeholder="Marwane..." autocomplete="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Votre email</label>
+                                <input type="email" id="email" name="email" placeholder="vous@exemple.com" autocomplete="email" required>
+                            </div>
+                        </div>
 
-        <footer class="site-footer">
-            <p>(c) 2025 Marwane Kabiri. Portfolio personnel.</p>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Choisir un sujet…</option>
+                                <option value="projet">Projet</option>
+                                <option value="stage">Stage</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre besoin…" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn--full">
+                            <span>Envoyer le message</span>
+                            <svg class="btn-arrow" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============================================
+         FOOTER
+    ============================================= -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-copy">
+                © 2025 Marwane Kabiri · Portfolio personnel
+            </p>
             <div class="footer-links">
                 <a href="https://www.instagram.com/marwane_kbr_23/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.linkedin.com/in/marwane-kabiri-42585a3a8?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href="tel:+212665380718">Telephone</a>
+                <a href="https://www.linkedin.com/in/marwane-kabiri-42585a3a8" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="tel:+212665380718">Téléphone</a>
+                <a href="#top">↑ Haut de page</a>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+
+    <!-- =============================================
+         MINIMAL JS: mobile nav + scroll animations
+    ============================================= -->
+    <script>
+        /* --- Mobile nav toggle --- */
+        const toggle = document.getElementById('navToggle');
+        const nav    = document.getElementById('siteNav');
+
+        toggle.addEventListener('click', () => {
+            const open = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!open));
+            nav.classList.toggle('is-open', !open);
+        });
+
+        /* Close nav on link click (mobile) */
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.setAttribute('aria-expanded', 'false');
+                nav.classList.remove('is-open');
+            });
+        });
+
+        /* --- Intersection Observer: animate elements on scroll --- */
+        const revealEls = document.querySelectorAll(
+            '.skill-row, .project-card, .info-item, .skill-cat-card, .contact-link, .about-story, .hero-card'
+        );
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealEls.forEach(el => observer.observe(el));
+
+        /* --- Skill bar animation: triggered by IntersectionObserver --- */
+        const skillRows = document.querySelectorAll('.skill-row');
+
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.skill-fill');
+                    if (fill) {
+                        // Small delay so the transition is visible
+                        setTimeout(() => fill.classList.add('animated'), 100);
+                    }
+                    barObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        skillRows.forEach(row => barObserver.observe(row));
+
+        /* --- Sticky header shadow on scroll --- */
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 30);
+        }, { passive: true });
+
+        /* --- Contact form: open a prefilled email --- */
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!this.reportValidity()) return;
+
+            const data = new FormData(this);
+            const name = data.get('name').trim();
+            const email = data.get('email').trim();
+            const subject = data.get('subject');
+            const message = data.get('message').trim();
+            const btnText = this.querySelector('button[type="submit"] span');
+
+            const emailSubject = encodeURIComponent(`Portfolio - ${subject}`);
+            const emailBody = encodeURIComponent(
+                `Nom: ${name}\nEmail: ${email}\nSujet: ${subject}\n\nMessage:\n${message}`
+            );
+
+            window.location.href = `mailto:KABIRI.MARWANE@usms.ac.ma?subject=${emailSubject}&body=${emailBody}`;
+            btnText.textContent = 'Email prêt à envoyer';
+            this.reset();
+
+            setTimeout(() => { btnText.textContent = 'Envoyer le message'; }, 3000);
+        });
+    </script>
+
 </body>
 </html>
